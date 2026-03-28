@@ -35,10 +35,15 @@ from llama_index.llms.groq import Groq
 # --- INICIALIZAÇÃO CLOUD ---
 if not firebase_admin._apps:
     try:
-        cred = credentials.Certificate(dict(st.secrets["firebase"]))
+        firebase_config = dict(st.secrets["firebase"])
+        # Streamlit Cloud pode manter \\n literal na private_key — normalizar
+        if "private_key" in firebase_config:
+            firebase_config["private_key"] = firebase_config["private_key"].replace("\\n", "\n")
+        cred = credentials.Certificate(firebase_config)
         firebase_admin.initialize_app(cred)
     except Exception as e:
-        print("Erro Firebase Init:", e)
+        st.error(f"❌ Erro ao inicializar Firebase: {e}")
+        st.stop()
 db = firestore.client()
 # ---------------------------
 
