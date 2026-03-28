@@ -4,7 +4,7 @@ pypdf
 groq
 gTTS
 firebase-admin
-pinecone-client
+pinecone
 llama-index-core
 llama-index-llms-groq
 llama-index-vector-stores-pinecone
