@@ -1,0 +1,10 @@
+streamlit
+streamlit-agraph
+pypdf
+groq
+gTTS
+firebase-admin
+pinecone-client
+llama-index-core
+llama-index-llms-groq
+llama-index-vector-stores-pinecone
